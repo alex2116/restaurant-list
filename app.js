@@ -34,6 +34,10 @@ app.get('/restarant/new', (req,res) => {
   return res.render('new')
 })
 
+app.get('/restaurant-detail/:restaurant_id', (req,res) => {
+
+})
+
 app.post('/add-restaurant', (req,res) => {
   const name = req.body.name
   const name_en = req.body.name_en
@@ -50,10 +54,12 @@ app.post('/add-restaurant', (req,res) => {
     .catch(error => console.log(error))
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  console.log(req.params.restaurant_id)
-  res.render('show', {restaurant})
+app.get('/detail/:restaurant_id', (req, res) => {
+  const id = req.params.restaurant_id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('detail', {restaurant}))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
