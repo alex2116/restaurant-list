@@ -47,7 +47,7 @@ header {
 
 .form-control:focus {
   box-shadow: none;
-  border-color: #ced4da;
+  border-color: #2e4257;
 }
 
 .card {
@@ -76,6 +76,12 @@ header {
   text-align: center;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+  margin-bottom: 10px;
+  position: relative;
+  left: 35%;
 }
 
 @media screen and (max-width: 992px) {

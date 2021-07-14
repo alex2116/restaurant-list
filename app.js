@@ -1,16 +1,33 @@
 const express = require('express')
 const app = express()
-const restaurantList = require('./restaurant.json')
+// const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
 const port = 3000
-//
+const mongoose = require('mongoose')
+const Restaurant = require('./models/restaurant')
+
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true})
+
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected')
+})
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true}))
 
 app.get('/', (req, res) => {
-  res.render('index', {restaurantList: restaurantList.results})
+  Restaurant.find()
+  .lean()
+  .then(restaurant => res.render('index', {restaurant}))
+  .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
