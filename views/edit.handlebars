@@ -1,0 +1,38 @@
+<div class="add-restaurant-form ml-4">
+  <h3 class="ml-3">{{ restaurant.name }} : Edit</h3>
+  <div class="card col-12 col-md-6 col-lg-6 mb-4" >
+    <form action="/{{ restaurant._id }}/edit" method="POST">
+      <div class="input-group mb-3 mt-2">
+        <input type="text" class="form-control" placeholder="name" name="name" value="{{ restaurant.name }}" required>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="name_en" name="name_en" value="{{ restaurant.name_en }}">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="category" name="category" value="{{ restaurant.category }}" required>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="image.url" name="image" value="{{ restaurant.image }}">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="location" name="location" value="{{ restaurant.location }}" required>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="phone" name="phone" value="{{ restaurant.phone }}">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="google_map url" name="google_map" value="{{ restaurant.google_map }}">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="rating" name="rating" value="{{ restaurant.rating }}">
+      </div>
+      <div class="input-group mb-3">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"placeholder="description" name="description">{{ restaurant.description }}</textarea>
+      </div>    
+      <div style="text-align:right">
+      <a href="/" class="">back</a>
+      <button class="btn btn-info mb-2 ml-3" type="submit">edit</button>
+      </div>
+    </form>
+  </div>
+</div>
