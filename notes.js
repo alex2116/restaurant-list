@@ -38,3 +38,16 @@ app.post('/:restaurant_id/edit', (req, res) => {
     .then(() => res.redirect(`/detail/${id}`))
     .catch(error => console.log(error))
 })
+
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const restaurants = Restaurant.filter(restaurants => restaurants.name.toLowerCase().replace(/\s+/g, '').includes(keyword.toLowerCase.replace(/\s+/g, '')))
+  return res.render('index', { restaurant: restaurants })
+})
+
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.toLowerCase()
+  return Restaurant.find({ name: { $regex: `${keyword}`, $options: 'i' } })
+    .lean()
+    .then(restaurant => res.render('index', { restaurant, keyword: req.query.keyword }))
+})

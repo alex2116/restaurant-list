@@ -1,20 +1,22 @@
 # 餐廳清單
-數家經過挑選的餐廳，提供搜尋功能，並且可以查閱餐廳資訊
+數家經過挑選的餐廳，提供新增、修改功能，並且可以查閱餐廳資訊
 
 ## 產品功能
 - 查看餐廳列表
 - 查閱餐廳詳細資訊，包含名稱、電話、地址與圖片等
-- 可用關鍵字查詢相對應的餐廳
+- 新增餐廳資料
+- 更改餐廳資料
 
 ### 搜尋
-輸入餐廳名字即可進行搜尋
+尚未加入搜尋功能
 
 ### 使用工具
-環境：Visual Studio Code、Node.js
-
-框架：Express
-
-模板引擎：Express-Handlebars
+- Visual Studio Code
+- Node.js
+- Express
+- Express-Handlebars
+- mongoDB
+- mongoose
 
 ### 安裝步驟
 

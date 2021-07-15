@@ -51,12 +51,6 @@ app.get('/detail/:restaurant_id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurants = Restaurant.filter(restaurants => restaurants.name.toLowerCase().replace(/\s+/g, '').includes(keyword.toLowerCase.replace(/\s+/g, '')))
-  return res.render('index', {restaurant: restaurants})
-})
-
 app.post('/add-restaurant', (req, res) => {
   const name = req.body.name
   const name_en = req.body.name_en
