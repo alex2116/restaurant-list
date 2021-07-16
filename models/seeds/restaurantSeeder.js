@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Restaurant = require('../restaurant')
+const Restaurants = require('../restaurants')
 const restaurantData = require('./restaurant.json')
 
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true }) //seeder要connect 因為這是預先配置好的資料嗎？
@@ -13,7 +13,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected')
 
-  Restaurant.create(Object.assign(restaurantData.results, restaurantData))
+  Restaurants.create(Object.assign(restaurantData.results, restaurantData))
     
   console.log('done.')
 })
