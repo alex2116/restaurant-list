@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const routes = require('./routes')
@@ -14,6 +15,7 @@ const port = 3000
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
+usePassport(app)
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
