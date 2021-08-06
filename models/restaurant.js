@@ -42,6 +42,10 @@ const restaurantSchema = new Schema({
     ref: 'User',
     index: true,
     required: true
+  },
+  "name_toLowerCase":{
+    type: String,
+    required: false
   }
 })
 

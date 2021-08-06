@@ -25,11 +25,21 @@ router.get('/:restaurant_id/detail', (req, res) => {
     .catch(error => console.log(error))
 })
 
+router.post('/search', (req, res) => {
+  const name_toLowerCase = req.body.keyword.toLowerCase().replace(/\s+/g, '')
+  const userId = req.user._id
+  return Restaurant.find({ name_toLowerCase, userId })
+    .lean()
+    .then(restaurant => res.render('index', {restaurant}))
+    .catch(error => console.log(error))
+})
+
 router.post('/add-restaurant', (req, res) => {
   const userId = req.user._id
+  let name_toLowerCase = req.body.name.toLowerCase().replace(/\s+/g, '')
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
 
-  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description, userId })
+  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description, userId, name_toLowerCase })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

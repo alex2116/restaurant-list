@@ -6,12 +6,13 @@ const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const routes = require('./routes')
 require('./config/mongoose')
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
@@ -39,6 +40,6 @@ app.use(methodOverride('_method'))
 
 app.use(routes)
 
-app.listen(port, () => {
-  console.log(`Express is listening on localhost: ${port}`)
+app.listen(PORT, () => {
+  console.log(`Express is listening on localhost: ${PORT}`)
 })
